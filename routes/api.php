@@ -15,7 +15,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); 
 
+Route::get('/listarPro', 'VentasController@listarPro');
+Route::get('/listarClientes', 'VentasController@listarClientes');
 Route::get('/listarProductos', 'VentasController@listarProductos');
 Route::get('/buscarCliente/{dni}', 'VentasController@buscarCliente');
+Route::post('/registrarVenta', 'VentasController@crearVenta'); 
+Route::post('/registrarDetalleVenta', 'VentasController@crearDetalle'); 
