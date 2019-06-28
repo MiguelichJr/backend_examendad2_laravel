@@ -40,6 +40,7 @@ class VentasController extends Controller
     }  
 
     public function crearDetalle(Request $request){
+        //sdgdfgdfg
         $idp=DB::select("select idventas from ventas order by idventas desc limit 1");
         foreach($idp as $i){
             DB::table('detalle_venta')->insert([
