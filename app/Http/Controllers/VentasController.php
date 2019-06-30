@@ -30,11 +30,21 @@ class VentasController extends Controller
 
     public function crearVenta(Request $request) {
 
-        $idventas = DB::table('ventas')->insert([
+        $idventas = DB::table('ventas')->insertGetId([
             "fecha"=>Carbon::now()->toDateString(),
             "idpersona"=>$request->idcliente,
             "idcliente"=>$request->idvendedor
-        ]);  
+        ]);      
+        //$idp=DB::select("select idventas from ventas order by idventas desc limit 1");
+        //foreach($idp as $i){
+            DB::table('detalle_venta')->insert([
+                "idventas"=>$idventas,   
+                "idproducto"=>$request->idproducto,
+                "precio"=>$request->precio,
+                "cantidad"=>$request->cantidad
+            ]);  
+        //}
+
    
     }  
 
