@@ -30,7 +30,7 @@ class VentasController extends Controller
 
     public function crearVenta(Request $request) {
 
-        $idventas = DB::table('ventas')->insertGetId([
+        $idventas = DB::table('ventas')->insert([
             "idventas"=>null,
             "fecha"=>Carbon::now()->toDateString(),
             "idpersona"=>$request->idcliente,
